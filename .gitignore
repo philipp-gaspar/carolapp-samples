@@ -1,3 +1,4 @@
 .DS_Store
 .env
 batch-carolapp/ai-script/luigi.log
+**/__pycache__
