@@ -1,16 +1,7 @@
-# -*- coding: utf-8 -*-
-
-from os.path import join, dirname, realpath
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-import dash_table
-import pandas as pd
+from dash import dcc, html 
+from dash.dependencies import Input, Output
 from .templates import add_topbar, add_card
-import locale
 
-carol = Carol()
-df = staging(carol).fetch_parquet()
 
 # page base tamplate (topbar, cards and dropdown)
 layout = html.Div(children=[
@@ -70,8 +61,8 @@ def get_purchases_chart(title, id, x, y):
 
 def register_callbacks(dashapp):
     @dashapp.callback(
-        dash.dependencies.Output('output-container', 'children'),
-        [dash.dependencies.Input('grafico', 'value')])
+        Output('output-container', 'children'),
+        [Input('grafico', 'value')])
     def update_selectable_cities(value):
         dropdown_values = []
 

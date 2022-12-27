@@ -1,6 +1,5 @@
 import dash
 from flask import Flask
-from flask.helpers import get_root_path
 from flask_login import login_required
 from .extensions import login
 
@@ -22,13 +21,13 @@ def create_app():
 
 
 def register_dashapps(app):
-    #from .dashapp1.layout import layout
-    #from .dashapp1.callbacks import register_callbacks
     from .dashapp.dash_visualization import layout
     from .dashapp.dash_visualization import register_callbacks
     
     # Meta tags for viewport responsiveness
-    meta_viewport = {"name": "viewport", "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
+    meta_viewport = {
+        "name": "viewport", 
+        "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
 
     dashapp = dash.Dash(__name__,
                          server=app,

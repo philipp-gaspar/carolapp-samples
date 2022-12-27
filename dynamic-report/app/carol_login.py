@@ -1,15 +1,13 @@
-from functools import wraps
 from pycarol.carol import Carol
 from pycarol.auth.PwdAuth import PwdAuth
-from flask import session
 
 from flask_login import UserMixin
 from .extensions import login
 
 import requests
 
-dict_environment = {'organization':'',
-                    'tenant':''}
+dict_environment = {'organization':'datascience',
+                    'tenant':'phildev'}
 
 @login.user_loader
 def load_user(id):

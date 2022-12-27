@@ -1,4 +1,5 @@
-import dash_html_components as html
+from dash import html
+
 
 def add_topbar(title):
     content = html.Header(className="header", children=[
