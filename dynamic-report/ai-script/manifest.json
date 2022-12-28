@@ -2,26 +2,46 @@
   "online": {
     "processes": [
       {
-        "name": "dynamic-report",
-        "algorithmName": "dynamic-report-sample",
-        "namespace": "",
+        "name": "DynamicReport",
+        "algorithmName": "dynamic_report", 
+        "namespace": "", 
         "algorithmTitle": {
-          "pt-br": "Dynamic Report",
-          "en-US": "Dynamic Report"
+          "en-US": "Dynamic Report Sample"
         },
         "algorithmDescription": {
-          "pt-br": "Dynamic Report",
-          "en-US": "Dynamic Report"
-        },
+          "en-US": "Dash Plotly dashboard sample." 
+        }, 
         "instanceProperties": {
-          "profile": "",
           "properties": {
-            "dockerImage": "",
-            "instanceMemory": "4",
-            "instanceVCPUs": "2"
+            "preemptible": false, 
+            "dockerName": "dynamic-report-app", 
+            "autoscale": {
+              "enable": false, 
+              "minReplicas": 1, 
+              "maxReplicas": 1
+            }
           }
+        },
+        "environments": {
+          "GUNICORN_NB_THREADS": "4", 
+          "GUNICORN_NB_WORKERS": "4", 
+          "GUNICORN_WORKER_CONNECTIONS": "1000", 
+          "GUNICORN_LOGLEVEL": "debug", 
+          "RELOAD": "True", 
+          "TIMEOUT": "120"
         }
       }
     ]
-  }
+  },
+  "docker": [
+    {
+      "dockerName": "dynamic-report-app",
+      "dockerTag": "0.0.1", 
+      "gitBranch": "update-report",
+      "gitPath": "/dynamic-report/", 
+      "instanceType": "c1.small", 
+      "gitDockerfileName": "Dockerfile", 
+      "gitRepoUrl": "https://github.com/philipp-gaspar/carolapp-samples"
+    }
+  ]
 }
